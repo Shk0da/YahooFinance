@@ -3,11 +3,13 @@ plugins {
 }
 
 group = "com.github.shk0da.yahoofinance"
-version = "1.0-SNAPSHOT"
+version = "0.1"
 
 repositories {
     mavenCentral()
 }
+
+apply(plugin = "maven")
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
