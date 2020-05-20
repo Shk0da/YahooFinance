@@ -15,8 +15,6 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.fasterxml.jackson.core:jackson-databind:2.11.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
-    implementation("org.slf4j:jcl-over-slf4j:1.7.30")
-    implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
 tasks {

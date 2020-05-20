@@ -4,14 +4,14 @@ import com.github.shk0da.yahoofinance.client.TradingViewClient
 import com.github.shk0da.yahoofinance.client.YahooClient
 import com.github.shk0da.yahoofinance.model.ScanRequest
 import com.github.shk0da.yahoofinance.model.ScanRequest.*
-import org.slf4j.LoggerFactory
 import java.lang.System.currentTimeMillis
 import java.util.*
 import java.util.concurrent.TimeUnit.DAYS
+import java.util.logging.Logger
 
 class Application {
 
-    private val log = LoggerFactory.getLogger(Application::class.java)
+    private val log = Logger.getAnonymousLogger()
 
     companion object {
         @JvmStatic
@@ -26,12 +26,12 @@ class Application {
 
     fun history() {
         val history = YahooClient().historyData("AAPL", Date(currentTimeMillis() - DAYS.toMillis(180)), Date())
-        log.info("history: {}", history)
+        log.info("history: $history")
     }
 
     fun tickerInfo() {
         val tickerInfo = YahooClient().tickerInfo("AAPL")
-        log.info("tickerInfo: {}", tickerInfo)
+        log.info("tickerInfo: $tickerInfo")
     }
 
     fun fundamental() {
@@ -46,11 +46,8 @@ class Application {
                 "quarterlyLongTermDebtAndCapitalLeaseObligation"
             )
         )
-        log.info("yahooFundamental[quarterlyTotalDebt]: {}", yahooFundamental.getLastValue("quarterlyTotalDebt"))
-        log.info(
-            "yahooFundamental[quarterlyRetainedEarnings]: {}",
-            yahooFundamental.getLastValue("quarterlyRetainedEarnings")
-        )
+        log.info("yahooFundamental[quarterlyTotalDebt]: ${yahooFundamental.getLastValue("quarterlyTotalDebt")}")
+        log.info("yahooFundamental[quarterlyRetainedEarnings]: ${yahooFundamental.getLastValue("quarterlyRetainedEarnings")}")
     }
 
     fun scanMarket() {
@@ -85,6 +82,6 @@ class Application {
             range = intArrayOf(0, 200)
         )
         val marketScan = TradingViewClient().scan(scanRequest)
-        log.info("marketScan: {}", marketScan)
+        log.info("marketScan: $marketScan")
     }
 }

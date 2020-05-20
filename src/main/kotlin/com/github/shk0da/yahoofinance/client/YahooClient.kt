@@ -18,8 +18,7 @@ import java.util.stream.Collectors
 class YahooClient {
 
     companion object {
-        const val BALANCE_SHEET_URI =
-            "https://query1.finance.yahoo.com/ws/fundamentals-timeseries/v1/finance/timeseries"
+        const val BALANCE_SHEET_URI = "https://query1.finance.yahoo.com/ws/fundamentals-timeseries/v1/finance/timeseries"
         const val HISTORY_DATA_URI = "https://query1.finance.yahoo.com/v7/finance/download"
         const val TICKER_INFO_URI = "https://query1.finance.yahoo.com/v8/finance/chart"
     }
@@ -28,8 +27,7 @@ class YahooClient {
     private val objectMapper = ObjectMapper().registerModule(KotlinModule())
 
     fun tickerInfo(symbol: String, region: String = "US"): TickerInfo {
-        val common =
-            "&lang=en-US&includePrePost=false&interval=2m&range=1d&corsDomain=in.finance.yahoo.com&.tsrc=finance"
+        val common = "&lang=en-US&includePrePost=false&interval=2m&range=1d&corsDomain=in.finance.yahoo.com&.tsrc=finance"
         val uri = "$TICKER_INFO_URI/$symbol?region=$region$common"
         val balanceRequest = HttpRequest.newBuilder()
             .uri(URI.create(uri))
