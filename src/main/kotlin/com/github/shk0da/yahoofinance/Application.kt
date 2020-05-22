@@ -36,7 +36,7 @@ class Application {
 
     fun fundamental() {
         val yahooFundamental = YahooClient().fundamental(
-            "AAPL", listOf(
+            "JKHY", listOf(
                 "quarterlyCurrentDebtAndCapitalLeaseObligation",
                 "quarterlyLongTermDebt",
                 "quarterlyTotalDebt",

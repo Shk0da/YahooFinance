@@ -16,14 +16,16 @@ data class FundamentalResult(val timeseries: Timeseries) {
         if (data.isEmpty) return ArrayList()
 
         val item = data.get() as List<LinkedHashMap<String, Any>>
-        return item.stream().map {
-            FundamentalValue(
-                asOfDate = it["asOfDate"] as String,
-                periodType = it["periodType"] as String,
-                currencyCode = it["currencyCode"] as String,
-                valueRaw = (it["reportedValue"] as LinkedHashMap<String, Any>)["raw"] as Double,
-                valueFmt = (it["reportedValue"] as LinkedHashMap<String, Any>)["fmt"] as String
-            )
-        }.collect(Collectors.toList())
+        return item.stream()
+            .filter { it != null }
+            .map {
+                FundamentalValue(
+                    asOfDate = it["asOfDate"] as String,
+                    periodType = it["periodType"] as String,
+                    currencyCode = it["currencyCode"] as String,
+                    valueRaw = (it["reportedValue"] as LinkedHashMap<String, Any>)["raw"] as Double,
+                    valueFmt = (it["reportedValue"] as LinkedHashMap<String, Any>)["fmt"] as String
+                )
+            }.collect(Collectors.toList())
     }
 }
