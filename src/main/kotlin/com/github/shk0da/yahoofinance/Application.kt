@@ -36,7 +36,7 @@ class Application {
 
     fun fundamental() {
         val yahooFundamental = YahooClient().fundamental(
-            "JKHY", listOf(
+            "VRTX", listOf(
                 "quarterlyCurrentDebtAndCapitalLeaseObligation",
                 "quarterlyLongTermDebt",
                 "quarterlyTotalDebt",
@@ -46,8 +46,13 @@ class Application {
                 "quarterlyLongTermDebtAndCapitalLeaseObligation"
             )
         )
+        log.info("yahooFundamental[quarterlyCurrentDebtAndCapitalLeaseObligation]: ${yahooFundamental.getLastValue("quarterlyCurrentDebtAndCapitalLeaseObligation")}")
+        log.info("yahooFundamental[quarterlyLongTermDebt]: ${yahooFundamental.getLastValue("quarterlyLongTermDebt")}")
         log.info("yahooFundamental[quarterlyTotalDebt]: ${yahooFundamental.getLastValue("quarterlyTotalDebt")}")
+        log.info("yahooFundamental[quarterlyCommonStockEquity]: ${yahooFundamental.getLastValue("quarterlyCommonStockEquity")}")
+        log.info("yahooFundamental[quarterlyStockholdersEquity]: ${yahooFundamental.getLastValue("quarterlyStockholdersEquity")}")
         log.info("yahooFundamental[quarterlyRetainedEarnings]: ${yahooFundamental.getLastValue("quarterlyRetainedEarnings")}")
+        log.info("yahooFundamental[quarterlyLongTermDebtAndCapitalLeaseObligation]: ${yahooFundamental.getLastValue("quarterlyLongTermDebtAndCapitalLeaseObligation")}")
     }
 
     fun scanMarket() {

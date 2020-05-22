@@ -7,7 +7,8 @@ data class FundamentalResult(val timeseries: Timeseries) {
     data class Timeseries(val result: List<Map<String, Any>>, val error: Any?)
 
     fun getLastValue(name: String): FundamentalValue? {
-        return getValues(name).maxBy { it.asOfDate }!!
+        val values = getValues(name)
+        return if (values.isEmpty()) null else values.maxBy { it.asOfDate }!!
     }
 
     @Suppress("unchecked_cast")
